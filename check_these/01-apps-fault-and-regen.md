@@ -7,13 +7,18 @@
 In `apps.rs`, un valore APPS non valido viene convertito in zero. Il controllo di plausibilità restituisce anch’esso zero in caso di errore e il risultato viene comunque registrato come lettura APPS:
 
 ```rust
-let apps_1_percentage = get_apps_percentage(...).unwrap_or_else(|err| {
+let apps_1_percentage = Self::get_apps_percentage(
+    &mut self.apps_1_filter,
+    self.sr.apps_1_range.0.read(),
+    self.sr.apps_1_range.1.read(),
+)
+    .unwrap_or_else(|err| {
     log::error!("Failed to get APPS1 percentage: {err}");
     // warning CAN omesso
     0.0 // valore non valido trasformato in una percentuale apparentemente valida
 });
 
-let percentage = apps_plausibility(apps_1_percentage, apps_2_percentage)
+let percentage = Self::apps_plausibility(apps_1_percentage, apps_2_percentage)
     .unwrap_or_else(|err| {
         log::error!("Failed APPS plausibility check: {err}");
         // error CAN omesso
