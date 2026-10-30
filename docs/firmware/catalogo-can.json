@@ -1,0 +1,6482 @@
+[
+  {
+    "file": "definitions/brain.yaml",
+    "name": "Raw APPS voltages",
+    "format": "standard",
+    "can_id": 900,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "APPS 1",
+        "description": "Voltage read from the APPS1 potentiometer.",
+        "multiplier": 1000,
+        "unit": "mV",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "APPS 2",
+        "description": "Voltage read from the APPS2 potentiometer.",
+        "multiplier": 1000,
+        "unit": "mV",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/brain.yaml",
+    "name": "Throttle percentage",
+    "format": "standard",
+    "can_id": 996,
+    "bits": 48,
+    "fields": [
+      {
+        "name": "Raw",
+        "description": "Raw throttle pedal percentage.",
+        "multiplier": 100,
+        "unit": "%",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Mapped",
+        "description": "Throttle pedal percentage after applying the motor map.",
+        "multiplier": 100,
+        "unit": "%",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Current mapped",
+        "description": "Throttle pedal percentage after applying the motor map",
+        "multiplier": 10,
+        "unit": "A",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/brain.yaml",
+    "name": "Control diagnostics",
+    "format": "standard",
+    "can_id": 1156,
+    "bits": 48,
+    "fields": [
+      {
+        "name": "Slip ratio",
+        "description": "The slip ratio calculated",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Current after traction control",
+        "description": "The current command after traction control has been applied",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Current after power limit",
+        "description": "The current command after power limit has been applied",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/brain.yaml",
+    "name": "Brake pressure",
+    "format": "standard",
+    "can_id": 943,
+    "bits": 24,
+    "fields": [
+      {
+        "name": "Pressure",
+        "description": "Pump pressure reading from the brake line.",
+        "multiplier": 100,
+        "unit": "bar",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Position",
+        "description": "Front or rear brake line.",
+        "tag": true,
+        "content": {
+          "enum": {
+            "variants": [
+              "Front",
+              "Rear"
+            ],
+            "bits": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/brain.yaml",
+    "name": "Raw brake pressure voltages",
+    "format": "standard",
+    "can_id": 964,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "Raw voltage pressure",
+        "description": "Voltage reading from the brake line.",
+        "multiplier": 1000,
+        "unit": "mV",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Position",
+        "description": "Front or rear brake line.",
+        "tag": true,
+        "content": {
+          "enum": {
+            "variants": [
+              "Front",
+              "Rear"
+            ],
+            "bits": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/brain.yaml",
+    "name": "Brain Status",
+    "format": "standard",
+    "can_id": 1218,
+    "bits": 8,
+    "fields": [
+      {
+        "name": "State",
+        "description": "State of the state machine.",
+        "content": {
+          "enum": {
+            "variants": [
+              "LV",
+              "TS",
+              "R2D",
+              "Calibration"
+            ],
+            "bits": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/brain.yaml",
+    "name": "Extensometer delta",
+    "format": "standard",
+    "can_id": 1028,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "Delta",
+        "description": "Delta of the extensometer.",
+        "unit": "mm",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Position",
+        "description": "Position of the extensometer.",
+        "tag": true,
+        "content": {
+          "enum": {
+            "variants": [
+              "Front Left",
+              "Front Right",
+              "Rear Left",
+              "Rear Right"
+            ],
+            "bits": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/brain.yaml",
+    "name": "Motor Map",
+    "format": "standard",
+    "can_id": 1255,
+    "bits": 8,
+    "fields": [
+      {
+        "name": "Map",
+        "description": "Motor map .",
+        "content": {
+          "enum": {
+            "variants": [
+              "Acceleration",
+              "Skidpad",
+              "Autocross",
+              "Endurance",
+              "TorqueTest",
+              "VelocityTest",
+              "Next"
+            ],
+            "bits": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/bridge.yaml",
+    "name": "ESP NOW Monitoring",
+    "format": "standard",
+    "can_id": 772,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "Sender",
+        "description": "Board that sent the data to the bridge via ESP-NOW.",
+        "tag": true,
+        "content": {
+          "enum": {
+            "variants": [
+              "Telemetry",
+              "BMS"
+            ],
+            "bits": 8
+          }
+        }
+      },
+      {
+        "name": "RSSI",
+        "description": "Signal strength indicator of a received packet.",
+        "unit": "dBm",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger Ctl",
+    "format": "standard raw",
+    "can_id": 1560,
+    "bits": 56,
+    "fields": [
+      {
+        "name": "CanEnable",
+        "description": "If both Can Enable and hardware enable pin are active and no error occurs, the charger is ready to start.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 1",
+        "description": "A padding of 3 bits.",
+        "content": {
+          "padding": {
+            "bits": 3
+          }
+        }
+      },
+      {
+        "name": "LED3_A",
+        "description": "If true a Led connected to the pins 10 and one of 13,14,15 could be powered when AC Mains is provided.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 2",
+        "description": "A padding of 3 bits.",
+        "content": {
+          "padding": {
+            "bits": 3
+          }
+        }
+      },
+      {
+        "name": "IacMaxSet",
+        "description": "Set Iac Max set (not used if J1772 or EN61851 are enabled).",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "VoutMaxSet",
+        "description": "Set DC maximum output voltage.",
+        "unit": "V",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "IoutMaxSet",
+        "description": "Set DC maximum output current.",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger Stat",
+    "format": "standard raw",
+    "can_id": 1552,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "PowerEnable",
+        "description": "Indicates if the hardware enable pin is active. From 25 July 2016 (serial number ME292830152203) the HVIL signal management is passive. So, it is not still monitored and the flag value is always equal to 1.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "ErrorLatch",
+        "description": "If True, a failure or a soft failure has occurred (See the table 1 of Fault Code).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "WarnLimit",
+        "description": "If True, a warning condition is present (See the table 1 of Fault Code).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 1",
+        "description": "A padding of 1 bit.",
+        "content": {
+          "padding": {
+            "bits": 1
+          }
+        }
+      },
+      {
+        "name": "LimTemp",
+        "description": "If True, the de-rating characteristic is active.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 2",
+        "description": "A padding of 1 bit.",
+        "content": {
+          "padding": {
+            "bits": 1
+          }
+        }
+      },
+      {
+        "name": "WarningHV",
+        "description": "If True, the CAN SERVICE communication with HV side is not implemented (the CAN Service pins are not connected).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Bulks",
+        "description": "If True, a Bulk error is present (See the table 1 of Fault Code).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "BigPadding",
+        "description": "A padding of 24 bits. It's there on the datasheet, I don't know if it's there also in the real message.",
+        "content": {
+          "padding": {
+            "bits": 24
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger Act1",
+    "format": "standard raw",
+    "can_id": 1553,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Iacm",
+        "description": "AC Input Current.",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp",
+        "description": "Temperature over Power Stage, actual value is offset by -40°C (0x0000 is -40°C).",
+        "unit": "°C",
+        "multiplier": 193,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "VOut",
+        "description": "DC Output Voltage.",
+        "unit": "V",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "IOut",
+        "description": "DC Output Current.",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger Act2",
+    "format": "standard raw",
+    "can_id": 1556,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "TempLogLV",
+        "description": "Temperature over Logic LV Stage, actual value is offset by -40°C (0x0000 is -40°C).",
+        "unit": "°C",
+        "multiplier": 193,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "AcPower",
+        "description": "AC input power.",
+        "unit": "kW",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "ProxcurrentLimit",
+        "description": "It defines the maximum AC input current available considering Proximity Signal (EN61851 only).",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "PilotcurrentLimit",
+        "description": "It defines the maximum AC input current available considering Pilot Signal (this value is divided by the number of the EVO chargers detected over CAN).",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger Tst1",
+    "format": "standard raw",
+    "can_id": 1557,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "ACok",
+        "description": "True if AC Mains is connected (this flag became true a little time before (300ms) the precharge starts).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "PrCompl",
+        "description": "True if AC Mains connected and pre-charge completed.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "PwrOk",
+        "description": "True if the charger starts to provide output power",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "VoutOk",
+        "description": "True if the Output voltage is present on charger side.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Neutral",
+        "description": "If False, the Neutral is connected correctly. It is referred to the correct connection of the Neutral in the following AC configurations: - 3-phase star configuration - 1-phase configuration This flag is linked to the other flags: Tst. 1 Neutro1 and Tst1.Neutro2. So, if the Tst. 1 Neutro1 is True and Tst. 1 Neutro2 is True, then Tst. 1Neutral is False. The Tst. 1 Neutral is TRUE only if there is a problem on the Neutral cable connection..",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "LED3",
+        "description": "This flag becomes true when: Tst1.LED618 is True, charger supplied with AC Mains and 12Vdc are provided to the pins 10 and one of 13, 14, 15.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "LED618",
+        "description": "This flag became true when Ct.LED3 is True. Tst1.LED618 represents an echo of the Ct.LED3 command. If True, a Led connected to the pins 10 and one of 13, 14, 15 could be powered when AC Mains is provided (see page 33, chapter 5.9.4.8 of the User's Manual EVO Series).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 1",
+        "description": "A padding of 1 bit.",
+        "content": {
+          "padding": {
+            "bits": 1
+          }
+        }
+      },
+      {
+        "name": "ovp",
+        "description": "True if there is a DC output over voltage flag (the overvoltage is referred to the maximum output voltage allowed by the charger range).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "connOpen",
+        "description": "Control loop Fail flag (HVIL on DC output connector), true if the output connector is not connected. From 25 July 2016 (serial number ME292830152203) the HVIL signal management is passive. So, it is not still monitored and this flag is not still evaluated.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 2",
+        "description": "A padding of 3 bits.",
+        "content": {
+          "padding": {
+            "bits": 3
+          }
+        }
+      },
+      {
+        "name": "TherFail",
+        "description": "If True, the charger is working in de-rating condition (see page 45, chapter 5.12 of the User's Manual).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 3",
+        "description": "A padding of 1 bit.",
+        "content": {
+          "padding": {
+            "bits": 1
+          }
+        }
+      },
+      {
+        "name": "rx618Fail",
+        "description": "RX ID618 fail flag, true if the control message is not received for more than 600ms.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "bulk1_fail",
+        "description": "If True, a Bulk error related to the channel 1 is present (See the table 1 of Fault Code).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "bulk2_fail",
+        "description": "If True, a Bulk error related to the channel 2 is present (See the table 1 of Fault Code).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "bulk3_fail",
+        "description": "If True, a Bulk error related to the channel 3 is present (See the table 1 of Fault Code).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "PUMPon",
+        "description": "True if there is a Pump active request (when Act1.Temp or Act2. TempLogLV value is over 35°C)",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "FANon",
+        "description": "True if there is a Fan active request (when Act1.Temp or Act2.TempLogLV value is over 40°C).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "HVrxFail",
+        "description": "If true, the communication with HV side of charger is erratic.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "CoolingFail",
+        "description": "If true, the cooling circuit is not connected or the liquid coolant is not present",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Rx619fail",
+        "description": "RX ID619 fail flag (used only if there are several charger in parallel for SAE J1772 or EN61851), true if the ID619 is not detected by slave chargers",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Neutro1",
+        "description": "If true, there is a good connection on neutral cable. Tst. 1 Neutro1 and Tst. Neutro2 are linked to an internal system that detects the neutral disconnection.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Neutro2",
+        "description": "If true, there is a good connection on neutral cable. Tst. 1 Neutro1 and Tst. Neutro2 are linked to an internal system that detects the neutral disconnection.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "ThreePhase",
+        "description": "True if Three phase AC configuration is set (Pin 8 of J2 connector NOT short circuited to ND; this is the default condition), False if Single phase AC configuration is set (Pin 8 of J2 connector short circuited to one of GND pins of the J2 connector) (*).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 4",
+        "description": "A padding of 2 bits.",
+        "content": {
+          "padding": {
+            "bits": 2
+          }
+        }
+      },
+      {
+        "name": "IacFail",
+        "description": "If True, the lac current value is over the maximum lac value permitted.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Ignition",
+        "description": "If True, the ignition run signal wakes up the charger from SLEEP when SAE J1772 or EN61851 is enabled (see page 29, chapter 5.9.4.2 of the User's Manual).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "LVBatteryNP",
+        "description": "If True, the LV Battery always hot is not present.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "ProxOk",
+        "description": "True if Proximity level is correct (only when EN61851/SAEJ1772 enabled).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 5",
+        "description": "A padding of 1 bit.",
+        "content": {
+          "padding": {
+            "bits": 1
+          }
+        }
+      },
+      {
+        "name": "PilotOk",
+        "description": "True if pilot signal is correct (only when EN61851/SAEJ1772 enabled).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 6",
+        "description": "A padding of 1 bit.",
+        "content": {
+          "padding": {
+            "bits": 1
+          }
+        }
+      },
+      {
+        "name": "S2Ok",
+        "description": "True if S2 is closed (only when EN61851/SAEJ1772 enabled).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 7",
+        "description": "A padding of 3 bits.",
+        "content": {
+          "padding": {
+            "bits": 3
+          }
+        }
+      },
+      {
+        "name": "Padding 8",
+        "description": "A padding of 8 bits, god forgive me.",
+        "content": {
+          "padding": {
+            "bits": 8
+          }
+        }
+      },
+      {
+        "name": "cntHours",
+        "description": "Hours counter (hours registered when the charger is providing output power. It is not considered the functioning of the charger when the control board is powered only with LV Battery always hot).",
+        "unit": "h",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger SAE_EVSE_STATUS",
+    "format": "standard raw",
+    "can_id": 1561,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "SAE_bitfield",
+        "description": "The raw message as a bitfield, look at the datasheet for more info",
+        "content": {
+          "bitfield": {
+            "bits": 48
+          }
+        }
+      },
+      {
+        "name": "Current",
+        "description": "It defines the maximum current available for each charger.",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger Req",
+    "format": "standard raw",
+    "can_id": 1563,
+    "bits": 24,
+    "fields": [
+      {
+        "name": "RequestEnable",
+        "description": "Bit Enable of Request to the charger. Yes, I know",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 1",
+        "description": "A padding of 7 bits.",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "ID_req",
+        "description": "Id of the diagnostic message requested",
+        "unit": "logic",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger SW",
+    "format": "standard raw",
+    "can_id": 1566,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Version",
+        "description": "8 bytes of software version, it's actually 8 ASCII chars.",
+        "unit": "logic",
+        "content": {
+          "variable": {
+            "type": "u64"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger FltA",
+    "format": "standard raw",
+    "can_id": 1565,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FltA_bitfield",
+        "description": "The raw message as a bitfield, look at the datasheet for more info",
+        "content": {
+          "bitfield": {
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "First",
+        "description": "Defines the first time that the fault occurred",
+        "unit": "h",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Last",
+        "description": "Defines the last time that the fault occurred",
+        "unit": "h",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger FltP",
+    "format": "standard raw",
+    "can_id": 1564,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FltP_bitfield",
+        "description": "The raw message as a bitfield, look at the datasheet for more info",
+        "content": {
+          "bitfield": {
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "First",
+        "description": "Defines the first time that the fault occurred",
+        "unit": "h",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Last",
+        "description": "Defines the last time that the fault occurred",
+        "unit": "h",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/charger.yaml",
+    "name": "Charger Tst2",
+    "format": "standard raw",
+    "can_id": 1558,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Tst2_bitfield",
+        "description": "The raw message as a bitfield, look at the datasheet for more info",
+        "content": {
+          "bitfield": {
+            "bits": 16
+          }
+        }
+      },
+      {
+        "name": "IacmMaxSet",
+        "description": "Defines the maximum AC input current (**).",
+        "unit": "A",
+        "multiplier": 5,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "VoutMaxSet",
+        "description": "Define the maximum DC output voltage.",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "IoutMaxSet",
+        "description": "Define the maximum DC output current.",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Psw",
+        "description": "System Password: 0b10100101 (0xA5)",
+        "unit": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/cooling.yaml",
+    "name": "RAD fans speed",
+    "format": "standard",
+    "can_id": 1572,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Speed fan 1",
+        "description": "Speed read from RAD fan 1.",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Speed fan 2",
+        "description": "Speed read from RAD fan 2.",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Speed fan 3",
+        "description": "Speed read from RAD fan 3.",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Speed fan 4",
+        "description": "Speed read from RAD  fan 4.",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/cooling.yaml",
+    "name": "Water pump info",
+    "format": "standard",
+    "can_id": 1604,
+    "bits": 24,
+    "fields": [
+      {
+        "name": "Pump speed",
+        "description": "Speed of the water pump.",
+        "multiplier": 100,
+        "unit": "%",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Pump status",
+        "description": "Status of the water pump.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "Padding of 7 bits",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/cooling.yaml",
+    "name": "Water temperature",
+    "format": "standard",
+    "can_id": 1668,
+    "bits": 48,
+    "fields": [
+      {
+        "name": "Engine output",
+        "description": "Temperature of the water coming out of the engine.",
+        "multiplier": 100,
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Inverter output",
+        "description": "Temperature of the water coming out of the inverter.",
+        "multiplier": 100,
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Input",
+        "description": "Temperature of the water coming out of the finned coil.",
+        "multiplier": 100,
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/cooling.yaml",
+    "name": "Critical connector interlock",
+    "format": "standard",
+    "can_id": 1700,
+    "bits": 8,
+    "fields": [
+      {
+        "name": "Interlock status",
+        "description": "Status of the critical connector interlock.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "Padding of 7 bits",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/energymeter.yaml",
+    "name": "EnergyMeter comp data",
+    "format": "standard raw",
+    "can_id": 1072,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "MsgCntr",
+        "description": "TMsgCntr",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Status",
+        "description": "Status",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Power",
+        "description": "Power mesuared by the EnergyMeter.",
+        "unit": "kW",
+        "endianness": "little",
+        "multiplier": 333,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Voltage",
+        "description": "Voltage mesuared by the EnergyMeter.",
+        "unit": "V",
+        "endianness": "little",
+        "multiplier": 25,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Current",
+        "description": "Current mesuared by the EnergyMeter.",
+        "unit": "A",
+        "endianness": "little",
+        "multiplier": 20,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/energymeter.yaml",
+    "name": "EnergyMeter high rate data",
+    "format": "standard raw",
+    "can_id": 1184,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "Voltage",
+        "unit": "mV",
+        "description": "Voltage mesuared by the EnergyMeter.",
+        "content": {
+          "bitfield": {
+            "bits": 20
+          }
+        }
+      },
+      {
+        "name": "Padding 1",
+        "description": "A padding of 1 bit.",
+        "content": {
+          "padding": {
+            "bits": 1
+          }
+        }
+      },
+      {
+        "name": "Current",
+        "unit": "mA",
+        "description": "Current mesuared by the EnergyMeter. This is in 2-complement",
+        "content": {
+          "bitfield": {
+            "bits": 19
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/energymeter.yaml",
+    "name": "EnergyMeter power data",
+    "format": "standard raw",
+    "can_id": 1185,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Power in",
+        "description": "Power input by the EnergyMeter.",
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      },
+      {
+        "name": "Power out",
+        "description": "Power output by the EnergyMeter.",
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/faults.yaml",
+    "name": "Error",
+    "format": "standard",
+    "can_id": 2,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "Error code",
+        "description": "Error code",
+        "content": {
+          "enum": {
+            "variants": [
+              "Other",
+              "BMS cell voltage out of range",
+              "BMS cell temperature out of range",
+              "BMS current out of range",
+              "BMS voltage sensor disconnected",
+              "BMS temperature sensor disconnected",
+              "BMS current sensor disconnected",
+              "Apps plausibility",
+              "APPS disconnected",
+              "Front brake disconnected",
+              "Rear brake disconnected",
+              "Burned fuse",
+              "ThreadFailed"
+            ],
+            "bits": 16
+          }
+        }
+      },
+      {
+        "name": "Code",
+        "description": "Useful code for debugging",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Board",
+        "description": "Board that generated the error",
+        "tag": true,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/faults.yaml",
+    "name": "Warning",
+    "format": "standard",
+    "can_id": 450,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "Warning code",
+        "description": "Warning code",
+        "content": {
+          "enum": {
+            "variants": [
+              "Other",
+              "APPS out of range",
+              "Messages error",
+              "Cooling temp invalid data",
+              "Cooling fans error",
+              "Rear left ext disconnected",
+              "Rear right ext disconnected",
+              "Sensors timeout",
+              "Sensor error",
+              "Parameter not found",
+              "Temperature check failed",
+              "Voltage check failed",
+              "LV battery charge low"
+            ],
+            "bits": 16
+          }
+        }
+      },
+      {
+        "name": "Code",
+        "description": "Useful code for debugging",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Board",
+        "description": "Board that generated the warning",
+        "tag": true,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/generic.yaml",
+    "name": "Ping",
+    "format": "extended",
+    "can_id": 532358,
+    "bits": 8,
+    "fields": [
+      {
+        "name": "Board ID",
+        "description": "The ID of the board that sent the ping.",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/generic.yaml",
+    "name": "Current timestamp",
+    "format": "standard",
+    "can_id": 804,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "UTC",
+        "description": "Current UTC timestamp.",
+        "content": {
+          "variable": {
+            "type": "i64"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/generic.yaml",
+    "name": "CAN bus status",
+    "format": "standard",
+    "can_id": 836,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "Load",
+        "description": "Load percentage of the CAN bus.",
+        "unit": "%",
+        "multiplier": 10000,
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/generic.yaml",
+    "name": "Board status",
+    "format": "standard",
+    "can_id": 868,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "Board ID",
+        "description": "The ID of the board that sent the message.",
+        "tag": true,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Power consumption",
+        "description": "The power consumption of the board, measured by the eFuse.",
+        "unit": "mA",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/generic.yaml",
+    "name": "New start finish line",
+    "format": "standard",
+    "can_id": 1444,
+    "bits": 8,
+    "fields": [
+      {
+        "name": "Request",
+        "description": "True if requested.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "Padding.",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/generic.yaml",
+    "name": "Reset reason",
+    "format": "standard",
+    "can_id": 1188,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Board ID",
+        "description": "The ID of the board that sent the message.",
+        "tag": true,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Reset reason",
+        "description": "Reset reason variant.",
+        "content": {
+          "enum": {
+            "variants": [
+              "ESP_RST_UNKNOWN",
+              "ESP_RST_POWERON",
+              "ESP_RST_EXT",
+              "ESP_RST_SW",
+              "ESP_RST_PANIC",
+              "ESP_RST_INT_WDT",
+              "ESP_RST_TASK_WDT",
+              "ESP_RST_WDT",
+              "ESP_RST_DEEPSLEEP",
+              "ESP_RST_BROWNOUT",
+              "ESP_RST_SDIO",
+              "ESP_RST_USB",
+              "ESP_RST_JTAG",
+              "ESP_RST_EFUSE",
+              "ESP_RST_PWR_GLITCH",
+              "ESP_RST_CPU_LOCKUP"
+            ],
+            "bits": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/generic.yaml",
+    "name": "Shutdown sensing",
+    "format": "standard",
+    "can_id": 1007,
+    "bits": 8,
+    "fields": [
+      {
+        "name": "Is opened",
+        "description": "True if the device is opened, false otherwise",
+        "unit": "logic",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Device name",
+        "description": "Name",
+        "tag": true,
+        "content": {
+          "enum": {
+            "variants": [
+              "TSMS",
+              "AMS",
+              "IMD",
+              "TSAC interlock",
+              "BSPD",
+              "HVD interlock",
+              "TSMP interlock",
+              "Inverter interlock",
+              "Rollbar switch LX",
+              "Dashboard switch",
+              "Inertia",
+              "Activation logic",
+              "BOTS",
+              "Rollbar switch RX",
+              "LVMS"
+            ],
+            "bits": 7
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/imd_bender.yaml",
+    "name": "IMD Info",
+    "format": "standard raw",
+    "can_id": 55,
+    "bits": 48,
+    "fields": [
+      {
+        "name": "D_IMC_R_ISO",
+        "endianness": "little",
+        "description": "Mean insulation resistance measured by the IMC.",
+        "unit": "kΩ",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Insulation fault",
+        "description": "Insulation fault.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Chassis fault",
+        "description": "Chassis fault.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "System failure",
+        "description": "System failure.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Calibration running",
+        "description": "Calibration running.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Self test running",
+        "description": "Self test running.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Insulation warning",
+        "description": "Insulation warning.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 1",
+        "description": "A padding of 10 bits.",
+        "content": {
+          "padding": {
+            "bits": 10
+          }
+        }
+      },
+      {
+        "name": "Insulation measurement",
+        "description": "Insulation measurement.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 2",
+        "description": "A padding of 1 bit.",
+        "content": {
+          "padding": {
+            "bits": 1
+          }
+        }
+      },
+      {
+        "name": "IMC Alive status detection",
+        "description": "IMC Alive status detection.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 3",
+        "description": "A padding of 5 bits.",
+        "content": {
+          "padding": {
+            "bits": 5
+          }
+        }
+      },
+      {
+        "name": "Insulation resistance value",
+        "description": "Insulation resistance value.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 3",
+        "description": "A padding of 3 bits.",
+        "content": {
+          "padding": {
+            "bits": 3
+          }
+        }
+      },
+      {
+        "name": "IMC self test OverAll scenario",
+        "description": "IMC self test.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "IMC self test ParameterConfig scenario",
+        "description": "IMC self test.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding 4",
+        "description": "A padding of 5 bits.",
+        "content": {
+          "padding": {
+            "bits": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Inverter general data 1",
+    "format": "standard",
+    "can_id": 1031,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "ERPM",
+        "description": "Electrical RPM. Equation: ERPM = Motor RPM * number of the motor pole pairs.",
+        "unit": "ERPM",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Duty cycle",
+        "description": "The controller duty cycle. The sign of this value will represent whether the motor is running(positive) current or regenerating (negative) current.",
+        "multiplier": 10,
+        "unit": "%",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Input voltage",
+        "description": "Input voltage is the DC voltage.",
+        "unit": "V",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Inverter general data 2",
+    "format": "standard",
+    "can_id": 1063,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "AC current",
+        "description": "The motor current. The sign of this value represents whether the motor is running(positive) current or regenerating (negative) current.",
+        "multiplier": 10,
+        "unit": "A_pk",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "DC current",
+        "description": "DC Current: Current on DC side. The sign of this value represents whether the motor is running(positive) current or regenerating (negative) current.",
+        "unit": "A_dc",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Inverter general data 3",
+    "format": "standard",
+    "can_id": 1095,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "Controller temperature",
+        "description": "Temperature of the inverter semiconductors.",
+        "multiplier": 10,
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Motor temperature",
+        "description": "Temperature of the motor measured by the inverter.",
+        "multiplier": 10,
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "Fault code",
+        "description": "Inverter fault codes.",
+        "content": {
+          "enum": {
+            "variants": [
+              "No fault",
+              "Overvoltage",
+              "Undervoltage",
+              "Transistor drive error",
+              "AC overcurrent",
+              "Controller overtemperature",
+              "Motor overtemperature",
+              "Sensor wire fault",
+              "Sensor general fault",
+              "CAN command error",
+              "Analog input error"
+            ],
+            "bits": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Inverter general data 4",
+    "format": "standard",
+    "can_id": 1127,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Id",
+        "description": "FOC algorithm component I_d.",
+        "multiplier": 100,
+        "unit": "A_pk",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Iq",
+        "description": "FOC algorithm component I_q.",
+        "multiplier": 100,
+        "unit": "A_pk",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Inverter general data 5",
+    "format": "standard",
+    "can_id": 1159,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Throttle signal",
+        "description": "Throttle signal derived from analog inputs or CAN2.",
+        "unit": "%",
+        "content": {
+          "variable": {
+            "type": "i8"
+          }
+        }
+      },
+      {
+        "name": "Brake signal",
+        "description": "Brake signal derived from analog inputs or CAN2.",
+        "unit": "%",
+        "content": {
+          "variable": {
+            "type": "i8"
+          }
+        }
+      },
+      {
+        "name": "Digital input 1",
+        "description": "Digital input 1. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital input 2",
+        "description": "Digital input 2. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital input 3",
+        "description": "Digital input 3. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital input 4",
+        "description": "Digital input 4. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital output 1",
+        "description": "Digital output 1. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital output 2",
+        "description": "Digital output 2. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital output 3",
+        "description": "Digital output 3. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital output 4",
+        "description": "Digital output 4. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Drive enable",
+        "description": "Drive enable. Active high. Drive can be enabled/disabled by the digital input or/and via CAN2 interface.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "Drive enable padding.",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Capacitor temperature limit",
+        "description": "The inverter can limit the output power to not to overheat the internal capacitors (only valid HW version 3.6 or newer). Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "DC current limit",
+        "description": "DC current limit. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Drive enable limit",
+        "description": "Indicates whether the drive enable limitation is active or inactive. Used for software development purposes. For true indication of the drive state please use byte 3, bit 24 of this message.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "IGBT acceleration temperature limit",
+        "description": "IGBT acceleration temperature limit. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "IGBT temperature limit",
+        "description": "IGBT temperature limit. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Input voltage limit",
+        "description": "Input voltage limit. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Motor acceleration temperature limit",
+        "description": "Motor acceleration temperature limit. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Motor temperature limit",
+        "description": "Motor temperature limit. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "RPM min limit",
+        "description": "RPM min limit. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "RPM max limit",
+        "description": "RPM max limit. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Power limit",
+        "description": "Power limit. Active high.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "Set to 0.",
+        "content": {
+          "padding": {
+            "bits": 5
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "Filled with FF's. For future use.",
+        "content": {
+          "padding": {
+            "bits": 8
+          }
+        }
+      },
+      {
+        "name": "CAN map version",
+        "description": "Indicates the CAN map version. For example, 23 is v2.3",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter AC current",
+    "format": "standard",
+    "can_id": 39,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "AC current",
+        "description": "Target motor AC current (peak).",
+        "multiplier": 10,
+        "unit": "A_pk",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter brake current",
+    "format": "standard",
+    "can_id": 71,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Target brake current",
+        "description": "Target brake current (peak).",
+        "multiplier": 10,
+        "unit": "A_pk",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter speed",
+    "format": "standard",
+    "can_id": 103,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "Target ERPM",
+        "description": "Target ERPM.",
+        "unit": "ERPM",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter position",
+    "format": "standard",
+    "can_id": 135,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Target position",
+        "description": "Target position.",
+        "multiplier": 10,
+        "unit": "°",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter relative current",
+    "format": "standard",
+    "can_id": 167,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Target relative AC current",
+        "description": "Target relative AC current.",
+        "multiplier": 10,
+        "unit": "%",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter relative brake current",
+    "format": "standard",
+    "can_id": 199,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Target relative brake AC current",
+        "description": "Target relative brake AC current.",
+        "multiplier": 10,
+        "unit": "%",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter digital output",
+    "format": "standard",
+    "can_id": 231,
+    "bits": 8,
+    "fields": [
+      {
+        "name": "Padding",
+        "description": "Set to 0.",
+        "content": {
+          "padding": {
+            "bits": 4
+          }
+        }
+      },
+      {
+        "name": "Digital output 4",
+        "description": "Sets the digital output 4 to HIGH (1) or LOW (0) state.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital output 3",
+        "description": "Sets the digital output 3 to HIGH (1) or LOW (0) state.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital output 2",
+        "description": "Sets the digital output 2 to HIGH (1) or LOW (0) state.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Digital output 1",
+        "description": "Sets the digital output 1 to HIGH (1) or LOW (0) state.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter maximum AC current",
+    "format": "standard",
+    "can_id": 263,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Maximum AC current",
+        "description": "Maximum AC current.",
+        "multiplier": 10,
+        "unit": "A_pk",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter maximum AC brake current",
+    "format": "standard",
+    "can_id": 295,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Maximum brake AC current",
+        "description": "Maximum brake AC current.",
+        "multiplier": 10,
+        "unit": "A_pk",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter maximum DC current",
+    "format": "standard",
+    "can_id": 327,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Maximum DC current",
+        "description": "Maximum DC current.",
+        "multiplier": 10,
+        "unit": "A",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Set inverter maximum DC brake current",
+    "format": "standard",
+    "can_id": 359,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Maximum brake DC current",
+        "description": "Maximum brake DC current.",
+        "multiplier": 10,
+        "unit": "A",
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/inverter.yaml",
+    "name": "Inverter drive enable",
+    "format": "standard",
+    "can_id": 391,
+    "bits": 8,
+    "fields": [
+      {
+        "name": "Padding",
+        "description": "Set to 0.",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Drive enable",
+        "description": "Enables the motor drive.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/lv_bms.yaml",
+    "name": "LV cell voltages",
+    "format": "standard",
+    "can_id": 1860,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Cell 1 voltage",
+        "description": "Voltage of cell 1.",
+        "unit": "mV",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Cell 2 voltage",
+        "description": "Voltage of cell 2.",
+        "unit": "mV",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Cell 3 voltage",
+        "description": "Voltage of cell 3.",
+        "unit": "mV",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Cell 4 voltage",
+        "description": "Voltage of cell 4",
+        "unit": "mV",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/lv_bms.yaml",
+    "name": "LV status 1",
+    "format": "standard",
+    "can_id": 1894,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Voltage",
+        "description": "Voltage of the LV battery.",
+        "unit": "mV",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Current",
+        "description": "Current being drawn from the LV battery.",
+        "unit": "mA",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Temperature",
+        "description": "Temperature of the LV battery.",
+        "unit": "°C",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/lv_bms.yaml",
+    "name": "LV status 2",
+    "format": "standard",
+    "can_id": 1943,
+    "bits": 56,
+    "fields": [
+      {
+        "name": "SoC",
+        "description": "State of charge of the LV battery.",
+        "unit": "%",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "SoH",
+        "description": "State of health of the LV battery.",
+        "unit": "%",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Time to empty",
+        "description": "Remaining time before the LV battery completely discharges.",
+        "unit": "s",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Status",
+        "description": "Status of the LV battery.",
+        "content": {
+          "enum": {
+            "variants": [
+              "Unknown",
+              "Idle",
+              "Charging",
+              "Discharging"
+            ],
+            "bits": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/lv_bms.yaml",
+    "name": "Fuse status",
+    "format": "standard",
+    "can_id": 1956,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "F1",
+        "description": "Status of the fuse F1.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "F2",
+        "description": "Status of the fuse F2.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "F3",
+        "description": "Status of the fuse F3.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "F4",
+        "description": "Status of the fuse F4.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "F5",
+        "description": "Status of the fuse F5.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "F6",
+        "description": "Status of the fuse F6.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "F7",
+        "description": "Status of the fuse F7.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "F8",
+        "description": "Status of the fuse F8.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "F9",
+        "description": "Status of the fuse F9.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "Padding.",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "SD card status",
+    "format": "extended",
+    "can_id": 1048835,
+    "bits": 8,
+    "fields": [
+      {
+        "name": "SD card status",
+        "description": "Status of the SD card (connected or disconnected).",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "Padding of 7 bits",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Vehicle Attitude 1",
+    "format": "extended",
+    "can_id": 1048836,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Roll",
+        "description": "Roll angle in milli-degrees.",
+        "unit": "mdeg",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Pitch",
+        "description": "Pitch angle in milli-degrees.",
+        "unit": "mdeg",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Vehicle Attitude 2",
+    "format": "extended",
+    "can_id": 1048837,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Heading",
+        "description": "Heading angle in milli-degrees.",
+        "unit": "mdeg",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Heading Accuracy",
+        "description": "Roll angle accuracy in milli-degrees.",
+        "unit": "mdeg",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Roll Accuracy",
+        "description": "Roll angle accuracy in milli-degrees.",
+        "unit": "mdeg",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Vehicle dynamics 1",
+    "format": "extended",
+    "can_id": 1048838,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "X Angular Rate",
+        "description": "Compensated x-axis angular rate.",
+        "unit": "deg/s",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Y Angular Rate",
+        "description": "Compensated y-axis angular rate.",
+        "unit": "deg/s",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Vehicle dynamics 2",
+    "format": "extended",
+    "can_id": 3932423,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Z Angular Rate",
+        "description": "Compensated z-axis angular rate.",
+        "unit": "deg/s",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "X Acceleration",
+        "description": "Compensated x-axis acceleration (with gravity).",
+        "unit": "m/s^2",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Vehicle dynamics 3",
+    "format": "extended",
+    "can_id": 3932424,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Y Acceleration",
+        "description": "Compensated y-axis acceleration (with gravity).",
+        "unit": "m/s^2",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Z Acceleration",
+        "description": "Compensated z-axis acceleration (with gravity).",
+        "unit": "m/s^2",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Raw X Angular Rate",
+    "format": "extended",
+    "can_id": 1048847,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "X Angular Rate",
+        "description": "x-axis gyroscope angular rate.",
+        "unit": "deg/s",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Raw Y Angular Rate",
+    "format": "extended",
+    "can_id": 1048848,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "Y Angular Rate",
+        "description": "y-axis gyroscope angular rate.",
+        "unit": "deg/s",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Raw Z Angular Rate",
+    "format": "extended",
+    "can_id": 1048849,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "Z Angular Rate",
+        "description": "z-axis gyroscope angular rate.",
+        "unit": "deg/s",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Raw X Acceleration",
+    "format": "extended",
+    "can_id": 1048850,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "X Acceleration",
+        "description": "x-axis accelerometer specific force",
+        "unit": "m/s^2",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Raw Y Acceleration",
+    "format": "extended",
+    "can_id": 1048851,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "Y Acceleration",
+        "description": "y-axis accelerometer specific force",
+        "unit": "m/s^2",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Raw Z Acceleration",
+    "format": "extended",
+    "can_id": 1048852,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "Z Acceleration",
+        "description": "z-axis accelerometer specific force",
+        "unit": "m/s^2",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Position 1",
+    "format": "extended",
+    "can_id": 1048841,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "longitude",
+        "description": "Longitude in milli-degrees.",
+        "unit": "mdeg",
+        "multiplier": 10000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "latitude",
+        "description": "Latitude in milli-degrees.",
+        "unit": "mdeg",
+        "multiplier": 10000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Position 2",
+    "format": "extended",
+    "can_id": 1048842,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "height",
+        "description": "Height in meters.",
+        "unit": "mm",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Horizontal Accuracy",
+        "description": "Horizontal Accuracy",
+        "unit": "mm",
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Velocity 1",
+    "format": "extended",
+    "can_id": 1048843,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Ground speed",
+        "description": "Ground Speed (2-D)",
+        "unit": "mm/s",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Speed",
+        "description": "Speed (3-D)",
+        "unit": "mm/s",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Velocity 2",
+    "format": "extended",
+    "can_id": 1048844,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Heading of motion",
+        "description": "Heading of motion (2-D)",
+        "unit": "mdeg",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Heading of vehicle",
+        "description": "Heading of vehicle (2-D)",
+        "unit": "mdeg",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Odometer solution",
+    "format": "extended",
+    "can_id": 1048845,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Distance",
+        "description": "Ground distance since last reset",
+        "unit": "m",
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      },
+      {
+        "name": "Odometer accuracy",
+        "description": "Ground distance accuracy (1-sigma)",
+        "unit": "m",
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Lap report 1",
+    "format": "extended",
+    "can_id": 1048846,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Reference point X",
+        "description": "The X coordinate of the reference point used to count laps.",
+        "unit": "mdeg",
+        "multiplier": 10000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      },
+      {
+        "name": "Reference point Y",
+        "description": "The Y coordinate of the reference point used to count laps.",
+        "unit": "mdeg",
+        "multiplier": 10000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Lap report 2",
+    "format": "standard",
+    "can_id": 1751,
+    "bits": 48,
+    "fields": [
+      {
+        "name": "Lap count",
+        "description": "The total number of laps performed.",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Last lap time",
+        "description": "The time taken to complete the last lap.",
+        "unit": "ms",
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Steering angle",
+    "format": "standard",
+    "can_id": 1764,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "angle",
+        "description": "The steering angle.",
+        "multiplier": 10000,
+        "unit": "deg",
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/telemetry.yaml",
+    "name": "Front wheels tick frequency",
+    "format": "standard",
+    "can_id": 1796,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "Front left tick",
+        "description": "Front left wheel tick frequency per second.",
+        "multiplier": 1000,
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Front right tick",
+        "description": "Front right wheel tick frequency per second.",
+        "multiplier": 1000,
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "BMS current",
+    "format": "standard",
+    "can_id": 516,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "Current",
+        "description": "Current value",
+        "unit": "A",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "i32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "BMS cell voltage",
+    "format": "standard",
+    "can_id": 548,
+    "bits": 24,
+    "fields": [
+      {
+        "name": "Segment identifier",
+        "description": "Segment identifier.",
+        "tag": true,
+        "content": {
+          "bitfield": {
+            "bits": 4
+          }
+        }
+      },
+      {
+        "name": "Parallel identifier",
+        "description": "The parallel identifier inside the specified segment.",
+        "tag": true,
+        "content": {
+          "bitfield": {
+            "bits": 4
+          }
+        }
+      },
+      {
+        "name": "Voltage",
+        "description": "Voltage of the specified parallel.",
+        "unit": "V",
+        "multiplier": 10000,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "BMS cell temperature",
+    "format": "standard",
+    "can_id": 580,
+    "bits": 32,
+    "fields": [
+      {
+        "name": "Segment identifier",
+        "description": "Segment identifier.",
+        "tag": true,
+        "content": {
+          "bitfield": {
+            "bits": 4
+          }
+        }
+      },
+      {
+        "name": "Thermometer identifier",
+        "description": "First thermometer identifier.",
+        "tag": true,
+        "content": {
+          "bitfield": {
+            "bits": 5
+          }
+        }
+      },
+      {
+        "name": "Thermometer padding",
+        "description": "Padding.",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Temperature",
+        "description": "Temperature of the specified thermometer.",
+        "unit": "°C",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "BMS slaves die",
+    "format": "standard",
+    "can_id": 612,
+    "bits": 56,
+    "fields": [
+      {
+        "name": "Segment padding",
+        "description": "Padding.",
+        "content": {
+          "padding": {
+            "bits": 4
+          }
+        }
+      },
+      {
+        "name": "Segment identifier",
+        "description": "Segment identifier.",
+        "tag": true,
+        "content": {
+          "bitfield": {
+            "bits": 4
+          }
+        }
+      },
+      {
+        "name": "Total voltage",
+        "description": "Total voltage of the segment.",
+        "unit": "V",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Die temperature",
+        "description": "Temperature of the die.",
+        "unit": "°C",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "i16"
+          }
+        }
+      },
+      {
+        "name": "S1n to Vminus",
+        "description": "Total voltage from s1n to V-",
+        "unit": "V",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "BMS slaves power supply",
+    "format": "standard",
+    "can_id": 644,
+    "bits": 56,
+    "fields": [
+      {
+        "name": "Segment padding",
+        "description": "Padding.",
+        "content": {
+          "padding": {
+            "bits": 4
+          }
+        }
+      },
+      {
+        "name": "Segment identifier",
+        "description": "Segment identifier.",
+        "tag": true,
+        "content": {
+          "bitfield": {
+            "bits": 4
+          }
+        }
+      },
+      {
+        "name": "Analog supply voltage",
+        "description": "Analog input supply voltage.",
+        "unit": "V",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Digital supply voltage",
+        "description": "Digital input supply voltage.",
+        "unit": "V",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Second reference",
+        "description": "Voltage of the second reference",
+        "unit": "V",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "BMS discharging cells",
+    "format": "standard",
+    "can_id": 676,
+    "bits": 56,
+    "fields": [
+      {
+        "name": "Segment identifier",
+        "description": "Segment identifier.",
+        "tag": true,
+        "content": {
+          "bitfield": {
+            "bits": 4
+          }
+        }
+      },
+      {
+        "name": "Upper voltage threshold",
+        "description": "Upper voltage hysteresis threshold.",
+        "unit": "V",
+        "multiplier": 10000,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Lower voltage threshold",
+        "description": "Lower voltage hysteresis threshold.",
+        "unit": "V",
+        "multiplier": 10000,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Parallel 1 discharging",
+        "description": "Whether the first parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 2 discharging",
+        "description": "Whether the second parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 3 discharging",
+        "description": "Whether the third parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 4 discharging",
+        "description": "Whether the fourth parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 5 discharging",
+        "description": "Whether the fifth parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 6 discharging",
+        "description": "Whether the sixth parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 7 discharging",
+        "description": "Whether the seventh parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 8 discharging",
+        "description": "Whether the eighth parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 9 discharging",
+        "description": "Whether the ninth parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 10 discharging",
+        "description": "Whether the tenth parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 11 discharging",
+        "description": "Whether the eleventh parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 12 discharging",
+        "description": "Whether the twelfth parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 13 discharging",
+        "description": "Whether the thirteenth parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Parallel 14 discharging",
+        "description": "Whether the fourteenth parallel is discharging.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "Padding.",
+        "content": {
+          "padding": {
+            "bits": 6
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "Soc",
+    "format": "standard",
+    "can_id": 727,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Soc",
+        "description": "The state of charge of the TSAC.",
+        "unit": "%",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      },
+      {
+        "name": "Last soc with voltage",
+        "description": "The last state of charge calculated with voltage.",
+        "unit": "%",
+        "multiplier": 1000,
+        "content": {
+          "variable": {
+            "type": "u32"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "Precharge status",
+    "format": "standard",
+    "can_id": 751,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "V bat",
+        "description": "Battery voltage",
+        "unit": "V",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "V bus",
+        "description": "Bus voltage",
+        "unit": "V",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Air minus status",
+        "description": "Air minus status",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Air plus status",
+        "description": "Air plus status",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Precharge relay status",
+        "description": "Precharge relay status",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "A padding of 6 bits.",
+        "content": {
+          "padding": {
+            "bits": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "TSAC cooling status",
+    "format": "standard",
+    "can_id": 484,
+    "bits": 40,
+    "fields": [
+      {
+        "name": "Fan speed",
+        "description": "Speed read from TSAC fan",
+        "unit": "RPM",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Speed target",
+        "description": "Speed target of the fans.",
+        "unit": "RPM",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Gate SiC feedback",
+        "description": "SiC Gate-Driver Ready Feedback. High means that the Driver is ready to receive the closing signal",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Supply SiC feedback",
+        "description": "SiC supply generation feedback. High means everything is fine, low if there are problems",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Ready SiC feedback",
+        "description": "SiC Gate-Driver Ready Feedback. High means the Driver is ready to receive the closing signal.",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "A padding of 5 bits.",
+        "content": {
+          "padding": {
+            "bits": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tsac_unit.yaml",
+    "name": "TSAC cutoff current",
+    "format": "standard",
+    "can_id": 1551,
+    "bits": 16,
+    "fields": [
+      {
+        "name": "Cutoff current",
+        "description": "Current grater than this value should not be sent.",
+        "unit": "A",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 1 F L Tire",
+    "format": "standard raw",
+    "can_id": 784,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 1",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 2",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 3",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 4",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 2 F L Tire",
+    "format": "standard raw",
+    "can_id": 785,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 5",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 6",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 7",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 8",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 3 F L Tire",
+    "format": "standard raw",
+    "can_id": 786,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 9",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 10",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 11",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 12",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 4 F L Tire",
+    "format": "standard raw",
+    "can_id": 787,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 13",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 14",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 15",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 16",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 1 F R Tire",
+    "format": "standard raw",
+    "can_id": 816,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 1",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 2",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 3",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 4",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 2 F R Tire",
+    "format": "standard raw",
+    "can_id": 817,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 5",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 6",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 7",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 8",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 3 F R Tire",
+    "format": "standard raw",
+    "can_id": 818,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 9",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 10",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 11",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 12",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 4 F R Tire",
+    "format": "standard raw",
+    "can_id": 819,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 13",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 14",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 15",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 16",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 1 R L Tire",
+    "format": "standard raw",
+    "can_id": 848,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 1",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 2",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 3",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 4",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 2 R L Tire",
+    "format": "standard raw",
+    "can_id": 849,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 5",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 6",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 7",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 8",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 3 R L Tire",
+    "format": "standard raw",
+    "can_id": 850,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 9",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 10",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 11",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 12",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 4 R L Tire",
+    "format": "standard raw",
+    "can_id": 851,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 13",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 14",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 15",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 16",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 1 R R Tire",
+    "format": "standard raw",
+    "can_id": 880,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 1",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 2",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 3",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 4",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 2 R R Tire",
+    "format": "standard raw",
+    "can_id": 881,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 5",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 6",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 7",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 8",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 3 R R Tire",
+    "format": "standard raw",
+    "can_id": 882,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 9",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 10",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 11",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 12",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 4 R R Tire",
+    "format": "standard raw",
+    "can_id": 883,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 13",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 14",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 15",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 16",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 1 F L Brake",
+    "format": "standard raw",
+    "can_id": 1296,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 1",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 2",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 3",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 4",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 2 F L Brake",
+    "format": "standard raw",
+    "can_id": 1297,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 5",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 6",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 7",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 8",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 3 F L Brake",
+    "format": "standard raw",
+    "can_id": 1298,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 9",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 10",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 11",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 12",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 4 F L Brake",
+    "format": "standard raw",
+    "can_id": 1299,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 13",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 14",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 15",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 16",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 1 F R Brake",
+    "format": "standard raw",
+    "can_id": 1328,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 1",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 2",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 3",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 4",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 2 F R Brake",
+    "format": "standard raw",
+    "can_id": 1329,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 5",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 6",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 7",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 8",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 3 F R Brake",
+    "format": "standard raw",
+    "can_id": 1330,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 9",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 10",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 11",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 12",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 4 F R Brake",
+    "format": "standard raw",
+    "can_id": 1331,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 13",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 14",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 15",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 16",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 1 R L Brake",
+    "format": "standard raw",
+    "can_id": 1360,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 1",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 2",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 3",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 4",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 2 R L Brake",
+    "format": "standard raw",
+    "can_id": 1361,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 5",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 6",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 7",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 8",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 3 R L Brake",
+    "format": "standard raw",
+    "can_id": 1362,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 9",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 10",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 11",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 12",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 4 R L Brake",
+    "format": "standard raw",
+    "can_id": 1363,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 13",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 14",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 15",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 16",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 1 R R Brake",
+    "format": "standard raw",
+    "can_id": 1392,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 1",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 2",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 3",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 4",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 2 R R Brake",
+    "format": "standard raw",
+    "can_id": 1393,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 5",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 6",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 7",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 8",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 3 R R Brake",
+    "format": "standard raw",
+    "can_id": 1394,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 9",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 10",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 11",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 12",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps.yaml",
+    "name": "Temperature 4 R R Brake",
+    "format": "standard raw",
+    "can_id": 1395,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "Temp ch 13",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 14",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 15",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Temp ch 16",
+        "description": "",
+        "multiplier": 10,
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Temp sensor cfg request",
+    "format": "standard raw",
+    "can_id": 768,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "New Base Id",
+        "description": "New base ID for CAN messages",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding 2",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Initial Configuration Duration",
+        "description": "Duration of the initial configuration (seconds)",
+        "unit": "s",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "Padding 1",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "CAN Baud Rate",
+        "description": "CAN baud rate: 0 - 500kbps, 1 - 1Mbps",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Temp sensor cfg response",
+    "format": "standard raw",
+    "can_id": 769,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "New Base Id",
+        "description": "New base ID for CAN messages",
+        "content": {
+          "variable": {
+            "type": "u16"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding 2",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Initial Configuration Duration",
+        "description": "Duration of the initial configuration (seconds)",
+        "unit": "s",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Padding",
+        "description": "Padding 1",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "CAN Baud Rate",
+        "description": "CAN baud rate: 0 - 500kbps, 1 - 1Mbps",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Sensor data summary F L Tire",
+    "format": "standard raw",
+    "can_id": 788,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FW Major",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "FW Minor",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding for the sensor data order",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Ambient Temperature",
+        "description": "Ambient temperature around the sensor, subtract 100 to get the real value",
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Sensor data summary F R Tire",
+    "format": "standard raw",
+    "can_id": 820,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FW Major",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "FW Minor",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding for the sensor data order",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Ambient Temperature",
+        "description": "Ambient temperature around the sensor, subtract 100 to get the real value",
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Sensor data summary R L Tire",
+    "format": "standard raw",
+    "can_id": 852,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FW Major",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "FW Minor",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding for the sensor data order",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Ambient Temperature",
+        "description": "Ambient temperature around the sensor, subtract 100 to get the real value",
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Sensor data summary R R Tire",
+    "format": "standard raw",
+    "can_id": 884,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FW Major",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "FW Minor",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding for the sensor data order",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Ambient Temperature",
+        "description": "Ambient temperature around the sensor, subtract 100 to get the real value",
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Sensor data summary F L Brake",
+    "format": "standard raw",
+    "can_id": 1300,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FW Major",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "FW Minor",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding for the sensor data order",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Ambient Temperature",
+        "description": "Ambient temperature around the sensor, subtract 100 to get the real value",
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Sensor data summary F R Brake",
+    "format": "standard raw",
+    "can_id": 1332,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FW Major",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "FW Minor",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding for the sensor data order",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Ambient Temperature",
+        "description": "Ambient temperature around the sensor, subtract 100 to get the real value",
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Sensor data summary R L Brake",
+    "format": "standard raw",
+    "can_id": 1364,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FW Major",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "FW Minor",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding for the sensor data order",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Ambient Temperature",
+        "description": "Ambient temperature around the sensor, subtract 100 to get the real value",
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "file": "definitions/tyre_brake_temps_config.yaml",
+    "name": "Sensor data summary R R Brake",
+    "format": "standard raw",
+    "can_id": 1396,
+    "bits": 64,
+    "fields": [
+      {
+        "name": "FW Major",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "FW Minor",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Emissivity",
+        "description": "Material emissivity in range from 0 to 1",
+        "multiplier": 100,
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sample Rate",
+        "description": "Sample frequency of the temperature from 1 to 64 hz",
+        "unit": "Hz",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Reserved",
+        "description": "",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order padding",
+        "description": "Padding for the sensor data order",
+        "content": {
+          "padding": {
+            "bits": 7
+          }
+        }
+      },
+      {
+        "name": "Sensor Data Order",
+        "description": "Order of the temperature read from the sensor",
+        "content": {
+          "variable": {
+            "type": "bool"
+          }
+        }
+      },
+      {
+        "name": "Number of Channels",
+        "description": "Number of channel to read the temperatures 1/4/8/16",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      },
+      {
+        "name": "Ambient Temperature",
+        "description": "Ambient temperature around the sensor, subtract 100 to get the real value",
+        "unit": "°C",
+        "content": {
+          "variable": {
+            "type": "u8"
+          }
+        }
+      }
+    ]
+  }
+]
