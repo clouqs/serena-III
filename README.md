@@ -10,11 +10,13 @@ Documentazione e piano di sviluppo del firmware della vettura Serena III. Il rep
 2. Per capire Brain, parti da [Brain: avvio, task, stati e controllo motore](docs/firmware/02-brain.md).
 3. Per il nuovo Brain, leggi il [piano di sviluppo](docs/brain-new/PIANO.md). Nel checkout analizzato, i file di `brain_new` sono ancora vuoti; `brain_sync` è il riferimento di comportamento esistente.
 4. Per contribuire in due, usa il [flusso di lavoro](CONTRIBUTING.md) e registra le decisioni in `docs/brain-new/decisioni/`.
+5. Per lavorare sulle schede con Codex, consulta la [guida Altium e MCP](docs/hardware/altium-codex.md).
 
 ## Struttura
 
 - `docs/firmware/` — guida del firmware, Brain, messaggi CAN, sviluppo e punti da verificare.
 - `docs/brain-new/` — architettura proposta, tappe di sviluppo e decisioni progettuali.
+- `docs/hardware/` — configurazione degli strumenti per le schede elettroniche.
 
 ## Codice sorgente
 
