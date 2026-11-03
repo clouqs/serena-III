@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-11-03T21:02:46+01:00",
+  "documented_source_revision": "ac91bd8ca657ee3962acefc0e5e57291e7d0ba19",
+  "source_checkout_provided": true,
+  "checks": {
+    "html_structure": "passed",
+    "chapters": 13,
+    "unique_ids": 123,
+    "links_checked": 207,
+    "search_entries": 54,
+    "public_symbols_documented": 48,
+    "external_ui_resources": 0,
+    "rust_driver_harness": {
+      "status": "passed",
+      "tests": 11,
+      "complete_markdown_examples_compiled": 2,
+      "method": "Sorgenti reali importati, HAL e logger sostituiti localmente. Nessun build ESP-IDF."
+    },
+    "javascript_syntax": "passed",
+    "javascript_interactions": {
+      "status": "passed",
+      "assertions": 35,
+      "scope": "DOM simulato: inizializzazione, ricerca e filtri, byte, conversioni, tema; nessuna resa grafica o API di sistema."
+    },
+    "cargo_metadata": {
+      "status": "passed",
+      "name": "max1161x",
+      "version": "0.1.0",
+      "targets": [
+        "max1161x",
+        "test"
+      ]
+    }
+  },
+  "limitations": [
+    "Nessuna compilazione completa ESP-IDF o dell’esempio originale.",
+    "Nessuna prova hardware, misura di tempi o validazione della taratura.",
+    "Browser integrato: URL file:// rifiutato per policy. Verifica visiva non completata.",
+    "Test JavaScript su DOM simulato: non verifica CSS, appunti, stampa o accessibilità reale."
+  ],
+  "source_sha256": {
+    "src/lib.rs": "79de9f3108311070874c12ce1018e4359b292bb0e563dcaf138fc01544866270",
+    "src/max_driver.rs": "224eec07a985713949a13f8f340015ce772dc4bcd58667955da461a9b5d34ea5",
+    "src/max_messages/config_byte.rs": "0166bb58716934e6923bf2814e5758e37c49179e522ec5aa0b5a768642cdfd75",
+    "src/max_messages/mod.rs": "263f0a20f922a7b5969d8597b6bc42196e6279a631eab562e6d53000b0a7d264",
+    "src/max_messages/setup_byte.rs": "c3f0c2065592b60ef4fdefb4b0777f609d6decdd2e1f806424e3caacf9bfc1cb",
+    "src/max_variants.rs": "2804de7a91a3b012f18ff0ec0931d23f298c278edd7442dfa6da6f45ecf709ed",
+    "src/mux_governor.rs": "9fb8664e7157d1047902024c1513cea3a0a9c4a2dbea60fa46a861f67559488b",
+    "Cargo.toml": "29acaebd5558fc91cc67a53592bcb911214e0b5d2ad7207a15dc331a5426d3c0",
+    "Cargo.lock": "9943b9372135435e33c2d3b168ad3d8db4897b336f9456fe580e09eb04500bc1",
+    "README.md": "d65dfdc443ff117476a0947be6615b0c9561366762e1f43da3e0820a0b565180",
+    "examples/test.rs": "df0a6bb8b2c9d04c4394e1dbed21956baf5974aa354ad3cd328e8127165bcd6f"
+  },
+  "output_sha256": "cf3b7060e8cb28cc337326f0489076f10e4981ab62ddc3e62135129e8fadcfa7"
+}

@@ -1,0 +1,44 @@
+<template id="tpl-byte">
+<div class="lab" id="lab-byte">
+  <h4>Componi i registri</h4><p class="lab-intro">Cambia i campi: i risultati seguono gli shift e gli OR dei sorgenti. Nessun comando viene inviato all'hardware.</p>
+  <div class="lab-grid">
+    <div class="lab-card"><h5>SetupByte</h5>
+      <label class="field">RefSelect<select id="ref"><option value="0">VddRef · 000</option><option value="2">ExternalRef · 010</option><option value="4">InternalRefOff · 100</option><option value="5">InternalRefOn · 101</option><option value="6">InternalRefOutputOff · 110</option><option value="7">InternalRefOutputOn · 111</option></select></label>
+      <label class="field">Clock<select id="clk"><option value="0">Internal · 0</option><option value="1">External · 1</option></select></label>
+      <label class="field">Mode<select id="bip"><option value="0">Unipolar · 0</option><option value="1">Bipolar · 1</option></select></label>
+      <label class="field">reset (bit RST)<select id="rst"><option value="1">true · 1 · nessuna azione</option><option value="0">false · 0 · reset configuration</option></select></label>
+      <output id="setup-value" class="byte-output" aria-live="polite">0x82 · 130</output><div id="setup-bits" class="bits" aria-label="Bit del setup"></div><div id="setup-code" class="lab-code"></div>
+    </div>
+    <div class="lab-card"><h5>ConfigByte</h5>
+      <label class="field">ScanConfig<select id="scan"><option value="0">ScanFromZero · 00</option><option value="1">RepeatEight · 01</option><option value="2">ScanUpperHalf · 10</option><option value="3">SingleChannel · 11</option></select></label>
+      <label class="field">ChannelSelect<select id="channel"><option value="0">Ain0</option><option value="1">Ain1</option><option value="2">Ain2</option><option value="3">Ain3</option><option value="4">Ain4</option><option value="5">Ain5</option><option value="6">Ain6</option><option value="7">Ain7</option><option value="8">Ain8</option><option value="9">Ain9</option><option value="10">Ain10</option><option value="11" selected>Ain11</option></select></label>
+      <label class="field">InputMode<select id="sgl"><option value="1">SingleEnded · 1</option><option value="0">Differential · 0</option></select></label>
+      <p class="lab-note">Il driver attuale usa sempre il default <code>0x17</code>. La configuration composta qui non sostituisce quella interna a <code>read_all_sensors()</code>.</p>
+      <output id="config-value" class="byte-output" aria-live="polite">0x17 · 23</output><div id="config-bits" class="bits" aria-label="Bit della configuration"></div><div id="config-code" class="lab-code"></div>
+    </div>
+  </div><p id="byte-warning" class="lab-warning" aria-live="polite"></p>
+  <button type="button" id="byte-reset">Ripristina i default</button>
+</div>
+</template>
+<template id="tpl-conversione">
+<div class="lab" id="lab-conversione">
+  <h4>Segui un campione</h4><p class="lab-intro">Decodifica un raw e applica la formula del driver. Il riferimento alternativo serve solo per confrontare le scale.</p>
+  <div class="lab-grid">
+    <div class="lab-card">
+      <label class="field">Codice ADC · 0…4095<input id="raw-number" type="number" min="0" max="4095" step="1" value="2048"></label>
+      <label class="field">Sposta il codice<input id="raw-range" type="range" min="0" max="4095" step="1" value="2048"></label>
+      <label class="field">Vref alternativa per il confronto (V)<input id="compare-vref" type="number" min="1" max="5.5" step="0.001" value="2.048"></label>
+      <p class="lab-note">La formula della libreria resta a 3,3 V. Il dato illustrato è unipolare. Il nibble alto del primo byte è mostrato a 0xF e viene mascherato.</p>
+      <div id="raw-code" class="lab-code"></div>
+    </div>
+    <div class="lab-card" aria-live="polite">
+      <div class="metric"><span>Raw ricostruito</span><strong id="raw-display">2048</strong></div>
+      <div class="metric"><span>Volt del driver · 3,3 V</span><strong id="driver-volts">1,650000 V</strong></div>
+      <p class="lab-note">Temperatura stimata dalla formula attuale</p><div class="value-large" id="driver-temp">42,85 °C</div>
+      <div class="metric"><span>Volt con Vref alternativa</span><strong id="compare-volts">1,024000 V</strong></div>
+      <div class="metric"><span>Polinomio sui volt alternativi</span><strong id="compare-temp"></strong></div>
+      <p id="range-note" class="lab-warning"></p>
+    </div>
+  </div><p class="lab-note">Il confronto riusa gli stessi coefficienti per illustrare l'effetto della scala. Non costituisce una nuova taratura o una misura hardware. Precisione JavaScript: possibili differenze minime dal percorso f32/f64 Rust.</p>
+</div>
+</template>
